@@ -1,0 +1,34 @@
+@if (store.loadingList()) {
+  <div class="loading-container">
+    <mat-progress-spinner
+      diameter="40"
+      mode="indeterminate"
+      class="loading-container__spinner">
+    </mat-progress-spinner>
+    <p>Loading songs...</p>
+  </div>
+}
+@else {
+  <mat-grid-list cols="1" rowHeight="1:2" class="song_list">
+    @for (song of store.songs(); track song.id) {
+      <mat-card class="song-card" appearance="outlined">
+        <mat-card-header>
+          <mat-card-title>{{song.title}}</mat-card-title>
+        </mat-card-header>
+        <img mat-card-image class="song_card-thumbnail" src="{{song.poster}}" alt="Poster of {{song.title}}">
+        <mat-card-content>
+          <mat-chip-set>
+            @for (genre of song.genre; track genre) {
+              <mat-chip>#{{genre}}</mat-chip>
+            }
+          </mat-chip-set>
+        </mat-card-content>
+      </mat-card>
+    }
+  </mat-grid-list>
+  <button class="action-button" mat-fab>
+    <mat-icon>add</mat-icon>
+  </button>
+
+}
+

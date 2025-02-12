@@ -1,0 +1,28 @@
+.song_list {
+  padding: 1rem
+}
+
+.song-card {
+  margin-bottom: 1rem
+}
+
+.song_card-thumbnail {
+  padding: 1rem
+}
+
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.loading-container__spinner {
+  margin-bottom: 1rem;
+}

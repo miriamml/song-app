@@ -1,13 +1,13 @@
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav" fixedInViewport
+  <mat-sidenav #drawer class="sidenav" fixedInViewport style="width: 300px"
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="(isHandset$ | async) === false">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item href="#">Canciones</a>
+      <a mat-list-item href="songs">Canciones</a>
       <a mat-list-item href="#">Artistas</a>
-      <a mat-list-item href="#">Compañias discofraficas</a>
+      <a mat-list-item href="#">Compañias discográficas</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>

@@ -1,59 +1,30 @@
-# Test
+# Prueba Tecnica - Song App
+> Autora: Miriam Martin Luna 
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.6.
+Este proyecto proporciona una aplicacion web basica que permite gestiona un catalogo de canciones.
 
-## Development server
+Forma parte de la prueba tecnica para **Sequence**.
 
-To start a local development server, run:
+A continuacion dejo una serie de notas y comentarios, sobre detalles que he encontrado durante el desarrllo.
 
-```bash
-ng serve
-```
+- He usado la version `0.17.0` de `json-server`. Ya que la ultima version beta ha eliminado la opcion de delay. Y la solucion que propone el desarrollador de la herramienta, es usar el throotle de peticiones HTTP de las herramientas de desarrollador de Chrome. El cual no me parece optima ya que limite el trafico de cualquier peticion, incluidos ficheros js, css, imagenes, etc..
+- He definido un script de npm llamado `api` que permite levantar el servidor mock. Ejecutar `npm run api`.
+- He usado Angular Material. La implementacion oficial de Material Design para Angular. Ya que es una de las librerias UI mas solidas y con mas comunidad del framework. Ademas, tengo experiencia en ella.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Modularizacion
 
-## Code scaffolding
+Aunque no he hecho uso de modulos con `@NgModule`. La aplicacion esta dividida en modulos por functionalidad (Module-per-feature).
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+- Modulo `common`: Contiene componentes base como el layout y el estado de la app
+- Modulo `song`. Contiene componentes y el estado necesario para gestionar canciones, ver la lista y editar canciones.
 
-```bash
-ng generate component component-name
-```
+## Estado de la app
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Para la gestion del estado de la app, he decidido usar NgRx. Ya que el estado es practicamente local y no existen variables globales, he optado por usar `SignalStore`. Un mecanismo que permite crear Stores de NgRx usando Signal.
 
-```bash
-ng generate --help
-```
+Muy comodo para manejar el estado de varios componentes o de un modulo. Su modo de funcionamiento es similar a otras librerias de otros frameworks como Pinia o Vuex. Con los que tambien he trabajado y me he sentido bastante comoda. 
 
-## Building
 
-To build the project run:
 
-```bash
-ng build
-```
+https://ngrx.io/guide/signals/signal-store
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng song-app
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.

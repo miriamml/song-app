@@ -2,3 +2,19 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.action-button {
+  position: fixed !important;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 1000;
+}
+
+/* Ajustes para móviles */
+@media (max-width: 600px) {
+  .action-button {
+    position: fixed !important;
+    bottom: 1rem;
+    right: 1rem;
+  }
+}
