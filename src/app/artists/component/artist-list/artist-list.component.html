@@ -1,0 +1,9 @@
+<chip-selectors
+    nameProp="name"
+    [data]="artistStore.artists()"
+    placeholder="Selecciona artistas"
+    label="Artistas"
+    [multiple]="false"
+    [(selects)]="value"
+    [loading]="artistStore.loadingArtists()"
+/>
