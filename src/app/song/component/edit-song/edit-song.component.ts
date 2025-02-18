@@ -64,7 +64,6 @@ export const MY_FORMATS = {
         MatDatepickerToggle,
         MatDatepicker,
         CountrySelectComponent,
-        JsonPipe,
     ],
     templateUrl: './edit-song.component.html',
     standalone: true,
@@ -109,7 +108,7 @@ export class SongEditComponent implements OnInit {
             .subscribe((data: {[key: string]: any}) => {
                 console.log(data)
                 Object.keys(data).forEach(key => {
-                    if (key === 'country') {
+                    if (key === 'country' && data[key] != null) {
                         data[key] = data[key].alpha2
                     }
                     if (key === 'year') {
