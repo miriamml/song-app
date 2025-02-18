@@ -1,10 +1,12 @@
+import {Country} from '@wlucha/ng-country-select';
+
 /**
  * Represents each song registered in the platform
  *
  * @author Miriam Martin Luna <miriam_ml_10@hotmail.es>
  */
 export default class Song {
-  id: number|null = null
+  id: string|null = null
   title: string = ''
   poster: string = ''
   genre: string[] = []
@@ -16,4 +18,6 @@ export default class Song {
    * Id of the artist
    */
   artist: number|null = null
+  companies: number[] = []
+  country = ''
 }
