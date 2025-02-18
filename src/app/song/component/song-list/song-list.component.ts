@@ -6,6 +6,7 @@ import {MatProgressSpinner, MatProgressSpinnerModule} from '@angular/material/pr
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {SongStore} from '../../state/song.store';
+import {RouterLink} from '@angular/router';
 
 
 /**
@@ -15,9 +16,10 @@ import {SongStore} from '../../state/song.store';
  */
 @Component({
     selector: 'app-song-list',
-    imports: [MatCardModule, MatGridListModule, MatChipsModule, MatProgressSpinnerModule, MatButtonModule, MatIconModule],
+    imports: [MatCardModule, MatGridListModule, MatChipsModule, MatProgressSpinnerModule, MatButtonModule, MatIconModule, RouterLink],
     templateUrl: './song-list.component.html',
     styleUrl: './song-list.component.css',
+    standalone: true,
     providers: [SongStore]
 })
 export class SongListComponent implements OnInit {
