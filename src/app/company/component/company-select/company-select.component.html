@@ -1,0 +1,10 @@
+<chip-selectors
+    nameProp="name"
+    [data]="companyStore.company()"
+    placeholder="Selecciona una companía"
+    label="Compañías"
+    [multiple]="true"
+    [(selects)]="value"
+    [loading]="companyStore.loadingCompanies()"
+
+/>
