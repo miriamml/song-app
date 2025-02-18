@@ -1,0 +1,11 @@
+::ng-deep #country-selector:has(.mat-mdc-form-field) .mat-mdc-form-field {
+    display: block !important;
+    margin: 15px;
+}
+
+.input-form__fields {
+    margin: 15px;
+}
+.edit-song__inputs {
+    width: 100%;
+}

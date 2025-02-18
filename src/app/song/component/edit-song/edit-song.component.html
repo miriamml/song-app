@@ -1,0 +1,75 @@
+@if (songStore.loadingSong()) {
+    <div class="loading-container">
+        <mat-progress-spinner
+            diameter="40"
+            mode="indeterminate"
+            class="loading-container__spinner">
+        </mat-progress-spinner>
+        <p>Loading song...</p>
+    </div>
+} @else {
+    <form [formGroup]="editSong">
+        <div class="input-form__fields">
+            <mat-form-field appearance="fill" class="edit-song__inputs">
+                <mat-label>Título</mat-label>
+
+                <input matInput
+                       placeholder="Titulo"
+                       formControlName="title"
+                />
+                @if (editSong.controls['title'].invalid) {
+                    <mat-error>El título no es obligatorio</mat-error>
+                }
+            </mat-form-field>
+        </div>
+
+        <artist-list formControlName="artist" />
+
+        <chip-selectors nameProp="id"
+            formControlName="genre"
+            [data]="songStore.genres()"
+            [selects]="currentSong().genre"
+            placeholder="Selecciona género"
+            label="Géneros"
+            [multiple]="true"
+        />
+
+        <company-select formControlName="companies" />
+
+        <ng-country-select id="country-selector"
+            [formControl]="countryControl"
+            [lang]="'es'"
+            [placeholder]="'Seleccionar país'"
+        />
+
+
+        <div class="input-form__fields">
+            <mat-form-field class="edit-song__inputs">
+                <mat-label>Año</mat-label>
+                <input matInput
+                   formControlName="year"
+                   placeholder="Año"
+                   [matDatepicker]="dp"
+                >
+                <mat-datepicker-toggle matIconSuffix [for]="dp"></mat-datepicker-toggle>
+                <mat-datepicker #dp startView="multi-year"
+                                (yearSelected)="setYear($event, dp)"
+                ></mat-datepicker>
+            </mat-form-field>
+        </div>
+
+        <div class="input-form__fields">
+            <mat-form-field appearance="fill" class="edit-song__inputs">
+                <mat-label>Puntuación</mat-label>
+                <input matInput
+                       formControlName="rating"
+                       placeholder="Rating"
+                >
+            </mat-form-field>
+        </div>
+    </form>
+    <button class="action-button" mat-fab (click)="save()" [disabled]="editSong.invalid">
+        <mat-icon>save</mat-icon>
+    </button>
+
+}
