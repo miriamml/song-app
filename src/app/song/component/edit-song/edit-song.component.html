@@ -11,14 +11,14 @@
     <form [formGroup]="editSong">
         <div class="input-form__fields">
             <mat-form-field appearance="fill" class="edit-song__inputs">
-                <mat-label>Título</mat-label>
+                <mat-label>{{'title' | translate}}</mat-label>
 
                 <input matInput
-                       placeholder="Titulo"
+                       [placeholder]="'title' | translate"
                        formControlName="title"
                 />
                 @if (editSong.controls['title'].invalid) {
-                    <mat-error>El título no es obligatorio</mat-error>
+                    <mat-error>{{'title_not_mandatory' | translate}}</mat-error>
                 }
             </mat-form-field>
         </div>
@@ -29,8 +29,8 @@
             formControlName="genre"
             [data]="songStore.genres()"
             [selects]="currentSong().genre"
-            placeholder="Selecciona género"
-            label="Géneros"
+            [placeholder]="'selected_genre' | translate"
+            [label]="'genres' | translate"
             [multiple]="true"
         />
 
@@ -39,16 +39,16 @@
         <ng-country-select id="country-selector"
             [formControl]="countryControl"
             [lang]="'es'"
-            [placeholder]="'Seleccionar país'"
+            [placeholder]="'selected_country' | translate"
         />
 
 
         <div class="input-form__fields">
             <mat-form-field class="edit-song__inputs">
-                <mat-label>Año</mat-label>
+                <mat-label>{{ 'year' | translate }}</mat-label>
                 <input matInput
                    formControlName="year"
-                   placeholder="Año"
+                   [placeholder]=" 'year' | translate"
                    [matDatepicker]="dp"
                 >
                 <mat-datepicker-toggle matIconSuffix [for]="dp"></mat-datepicker-toggle>
@@ -60,10 +60,10 @@
 
         <div class="input-form__fields">
             <mat-form-field appearance="fill" class="edit-song__inputs">
-                <mat-label>Puntuación</mat-label>
+                <mat-label>{{ 'rating' | translate }}</mat-label>
                 <input matInput
                        formControlName="rating"
-                       placeholder="Rating"
+                       [placeholder]="'rating' | translate"
                 >
             </mat-form-field>
         </div>

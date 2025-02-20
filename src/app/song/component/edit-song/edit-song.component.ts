@@ -1,5 +1,5 @@
 import {
-    AfterViewInit,
+    AfterViewInit, APP_INITIALIZER,
     Component, effect,
     inject,
     input,
@@ -23,9 +23,9 @@ import {provideMomentDateAdapter} from '@angular/material-moment-adapter';
 
 import * as _moment from 'moment'
 import {default as _rollupMoment, Moment} from 'moment';
-import {Country, CountrySelectComponent} from '@wlucha/ng-country-select';
-import {JsonPipe} from '@angular/common';
+import {CountrySelectComponent} from '@wlucha/ng-country-select';
 import {CountryService} from '../../../common/service/country/country.service';
+import {TranslatePipe} from '../../../pipes/translations/translate.pipe';
 
 const moment = _rollupMoment || _moment;
 
@@ -64,10 +64,14 @@ export const MY_FORMATS = {
         MatDatepickerToggle,
         MatDatepicker,
         CountrySelectComponent,
+        TranslatePipe,
     ],
     templateUrl: './edit-song.component.html',
     standalone: true,
-    providers: [SongStore, provideMomentDateAdapter(MY_FORMATS)],
+    providers: [
+        SongStore,
+        provideMomentDateAdapter(MY_FORMATS)
+    ],
     styleUrl: './edit-song.component.css'
 })
 export class SongEditComponent implements OnInit {
@@ -123,7 +127,6 @@ export class SongEditComponent implements OnInit {
         await this.songStore.loadSong(this.id())
 
         const song = this.currentSong()
-        console.log({song})
         this.editSong.patchValue({
             title: song.title,
             artist: song.artist,
